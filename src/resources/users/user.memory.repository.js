@@ -1,7 +1,6 @@
-const User = require('./user.model');
+const DB = require('../../datebase/db');
 
-const users = [];
-users.push(new User(), new User(), new User());
+const {users} = DB;
 
 const getAll = async () => users;
 
