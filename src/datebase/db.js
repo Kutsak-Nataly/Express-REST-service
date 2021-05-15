@@ -14,15 +14,12 @@ const DB = {
 (() => {
   const user = new User();
   DB.users.push(user, new User());
-  const column =  new Column();
+  const column = new Column();
   DB.columns.push(new Column());
-  const board = new Board({columns: [column]});
+  const board = new Board({ columns: [column] });
   DB.boards.push(board);
   DB.columns.push(board.columns);
-  DB.tasks.push(
-    new Task({ boardId: board.id, userId: user.id, columnId: column.id }),
-    new Task({ boardId: board.id, userId: user.id, columnId: column.id })
-  );
+  DB.tasks.push(new Task({ boardId: board.id, userId: user.id, columnId: column.id }));
 })();
 
 module.exports = DB;

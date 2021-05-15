@@ -36,7 +36,7 @@ router.route('/:id').put(async (req, res) => {
     ]
   };
   await boardService.putBoard(board);
-  res.status(201).json(board);
+  res.status(200).json(board);
 });
 
 router.route('/:id').delete(async (req, res) => {

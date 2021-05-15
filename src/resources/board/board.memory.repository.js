@@ -13,9 +13,10 @@ const putBoard = async board => {
   return boards.splice(boards.indexOf(boardOld), 1, board);
 };
 
-const deleteById = async (id) => {
+const deleteById = async id => {
   const boardDel = boards.find(board => board.id === id);
   boards.splice(boards.indexOf(boardDel), 1);
 };
+
 
 module.exports = { getAll, getById, postBoard, putBoard, deleteById };

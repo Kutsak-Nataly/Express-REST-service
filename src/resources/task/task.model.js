@@ -4,11 +4,11 @@ class Task {
   constructor({
                 id = uuid.v4(),
                 title = 'string',
-                order = 'string',
+                order = 0,
                 description = 'string',
-                userId = 'string || null', // assignee
+                userId = null,
                 boardId = 'string',
-                columnId = 'string'
+                columnId = null
               } = {}) {
     this.id = id;
     this.title = title;
@@ -18,7 +18,6 @@ class Task {
     this.boardId = boardId;
     this.columnId = columnId;
   }
-
 }
 
 module.exports = Task;

@@ -9,9 +9,13 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/:id').get(async (req, res) => {
-  const user = await usersService.getById(req.params.id);
-  res.json(User.toResponse(user));
-  res.status(200).json(user);
+  try {
+    const user = await usersService.getById(req.params.id);
+    res.json(User.toResponse(user));
+    res.status(200).json(user);
+  } catch (e) {
+    res.status(404).send(e);
+  }
 });
 
 router.route('/').post(async (req, res) => {
@@ -22,7 +26,7 @@ router.route('/').post(async (req, res) => {
   });
   await usersService.postUser(user);
   res.json(User.toResponse(user));
-  res.status(201).json(user);
+  res.status(200).json(user);
 });
 
 router.route('/:id').put(async (req, res) => {
@@ -33,7 +37,7 @@ router.route('/:id').put(async (req, res) => {
     password: req.body.password
   };
   await usersService.putUser(user);
-  res.status(201).json(user);
+  res.status(200).json(user);
 });
 
 router.route('/:id').delete(async (req, res) => {
