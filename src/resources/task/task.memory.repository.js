@@ -26,9 +26,10 @@ const removeByBoard = boardId => {
 };
 
 const updateTasksByUser = userId => {
-  tasks.forEach(task => {
+ tasks.forEach(task => {
     if (task.userId === userId) {
-       this.task.userId = null;
+      // eslint-disable-next-line no-param-reassign
+       task.userId = null;
     }
   });
 };
