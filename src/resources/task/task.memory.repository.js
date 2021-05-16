@@ -26,12 +26,11 @@ const removeByBoard = boardId => {
 };
 
 const updateTasksByUser = userId => {
- tasks.forEach(task => {
-    if (task.userId === userId) {
-      // eslint-disable-next-line no-param-reassign
-       task.userId = null;
+  for (let i = 0; i < tasks.length; i += 1) {
+    if (tasks[i].userId === userId) {
+      tasks[i].userId = null;
     }
-  });
+  }
 };
 
 module.exports = { getAll, getById, postTask, putTask, deleteById, removeByBoard, updateTasksByUser };
