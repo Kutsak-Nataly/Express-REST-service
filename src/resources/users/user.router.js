@@ -9,12 +9,12 @@ router.route('/').get(async (req, res) => {
 });
 
 router.route('/:id').get(async (req, res) => {
-  try {
-    const user = await usersService.getById(req.params.id);
+  const user = await usersService.getById(req.params.id);
+  if (user) {
     res.json(User.toResponse(user));
     res.status(200).json(user);
-  } catch (e) {
-    res.status(404).send(e);
+  } else {
+    res.status(404).json({ message: 'not found user' });
   }
 });
 
@@ -25,8 +25,7 @@ router.route('/').post(async (req, res) => {
     password: req.body.password
   });
   await usersService.postUser(user);
-  res.json(User.toResponse(user));
-  res.status(200).json(user);
+  res.status(201).json(User.toResponse(user));
 });
 
 router.route('/:id').put(async (req, res) => {

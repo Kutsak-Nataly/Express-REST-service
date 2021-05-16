@@ -9,7 +9,7 @@ class Board {
               } = {}) {
     this.id = id;
     this.title = title;
-    this.columns = columns.map((col) => new Column(col));;
+    this.columns = columns.map((col) => new Column(col));
   }
 }
 

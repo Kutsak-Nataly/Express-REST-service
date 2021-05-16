@@ -9,7 +9,11 @@ router.route('/').get(async (req, res) => {
 
 router.route('/:id').get(async (req, res) => {
   const task = await taskService.getById(req.params.boardId, req.params.id);
-  res.status(200).json(task);
+  if (task) {
+    res.status(200).json(task);
+  } else {
+    res.status(404).json({ message: 'not found task' });
+  }
 });
 
 router.route('/').post(async (req, res) => {
@@ -23,7 +27,7 @@ router.route('/').post(async (req, res) => {
     columnId: req.body.columnId
   });
   await taskService.postTask(task);
-  res.status(200).json(task);
+  res.status(201).json(task);
 });
 
 router.route('/:id').put(async (req, res) => {
