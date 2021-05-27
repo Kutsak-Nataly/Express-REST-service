@@ -1,72 +1,23 @@
-# RS School REST service
+# EXPRESS REST API
+### The development pattern is used - division into layers:
+1. Processing requests and responses from the browser
+2. Services in which the business logic of the application is processed
+3. Accessing the database directly 
 
-## Prerequisites
+***
+## Used
+Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
+## JsDoc
+To create documentation for the application, the module was used [JsDoc](https://www.npmjs.com/package/jsdoc).
+Additionally used module [docDash](https://github.com/clenemt/docdash)
 
-- Git - [Download & Install Git](https://git-scm.com/downloads).
-- Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
-
-## Downloading
-
+## CLI generate JSDoc
+```$xslt
+node_modules/.bin/jsdoc src -c conf.json
 ```
-git clone {repository URL}
-```
-
-## Installing NPM modules
-
-```
-npm install
-```
-
-## Running application
-
-```
-npm start
+## Generate JSDoc by script
+```$xslt
+npm run doc
 ```
 
-After starting the app on port (4000 as default) you can open
-in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
-For more information about OpenAPI/Swagger please visit https://swagger.io/.
 
-## Testing
-
-After application running open new terminal and enter:
-
-To run all tests without authorization
-
-```
-npm test
-```
-
-To run only one of all test suites (users, boards or tasks)
-
-```
-npm test <suite name>
-```
-
-To run all test with authorization
-
-```
-npm run test:auth
-```
-
-To run only specific test suite with authorization (users, boards or tasks)
-
-```
-npm run test:auth <suite name>
-```
-
-## Development
-
-If you're using VSCode, you can get a better developer experience from integration with [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extensions.
-
-### Auto-fix and format
-
-```
-npm run lint
-```
-
-### Debugging in VSCode
-
-Press <kbd>F5</kbd> to debug.
-
-For more information, visit: https://code.visualstudio.com/docs/editor/debugging
