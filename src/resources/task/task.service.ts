@@ -4,48 +4,52 @@
  * @requires taskRepo
  * @type {{getAll, getById, deleteById, updateTasksByUser, postTask, putTask, removeByBoard}|*}
  */
-const taskRepo = require('./task.memory.repository');
+import {taskRepo} from './task.memory.repository';
+import {Task} from "./task.model";
+
 /**
  * Get all tasks
  * @param boardId {string} - Unique identification parameter of task
  * @returns {Promise<Task[]>}
  */
-const getAll = boardId => taskRepo.getAll(boardId);
+const getAll = (boardId: string) => taskRepo.getAll(boardId);
 /**
  * Get task by id
  * @param boardId {string} - Unique identification parameter of board
  * @param id {string} - Unique identification parameter of task
  * @returns {Promise<Task>}
  */
-const getById = (boardId, id) => taskRepo.getById(boardId, id);
+const getById = (boardId: string, id: string) => taskRepo.getById(boardId, id);
 /**
  * Create new task
  * @param task {Task} - Instance class Task
  * @returns {Promise<number>}
  */
-const postTask = task => taskRepo.postTask(task);
+const postTask = (task:Task) => taskRepo.postTask(task);
 /**
  * Edit task
  * @param task {Task} - Instance class Task
  * @returns {Promise<void>}
  */
-const putTask = task => taskRepo.putTask(task);
+const putTask = (task:Task) => taskRepo.putTask(task);
 /**
  * Delete task by id from board with boardId
  * @param boardId {string} - Unique identification parameter of board
  * @param id {string} - Unique identification parameter of task
  * @returns {Promise<void>}
  */
-const deleteById = (boardId, id) => taskRepo.deleteById(boardId, id);
+const deleteById = (boardId: string, id: string) => taskRepo.deleteById(boardId, id);
 /**
- * Deleting all tasks whith boardId when deleting a board
+ * Deleting all tasks with boardId when deleting a board
  * @param boardId {string} - Unique identification parameter of Board
  */
-const removeByBoard = boardId => taskRepo.removeByBoard(boardId);
+const removeByBoard = (boardId: string) => taskRepo.removeByBoard(boardId);
 /**
- *
+ * Updating task data when deleting a user
  * @param userId
  */
-const updateTasksByUser = userId => taskRepo.updateTasksByUser(userId);
+const updateTasksByUser = (userId: string) => taskRepo.updateTasksByUser(userId);
 
-module.exports = { getAll, getById, postTask, putTask, deleteById, removeByBoard, updateTasksByUser };
+const taskService = {getAll, getById, postTask, putTask, deleteById, removeByBoard, updateTasksByUser};
+
+export {taskService};

@@ -1,4 +1,5 @@
-const uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
+
 /**
  * Class representing Task
  */
@@ -13,23 +14,24 @@ class Task {
      * @param boardId {string} - Unique identification number in the database of board
      * @param columnId {string} - Unique identification number in the database of column
      */
-  constructor({
-                id = uuid.v4(),
-                title = 'string',
-                order = 0,
-                description = 'string',
-                userId = null,
-                boardId = 'string',
-                columnId = null
-              } = {}) {
-    this.id = id;
-    this.title = title;
-    this.order = order;
-    this.description = description;
-    this.userId = userId;
-    this.boardId = boardId;
-    this.columnId = columnId;
-  }
+    title: string;
+    order: number;
+    description: string;
+    userId: string | null;
+    boardId: string;
+    columnId: string | null;
+    id?: string;
+
+
+    constructor(title: string = 'string', order: number = 0, description: string = 'string', userId: string | null  = null, boardId: string = 'string', columnId: string | null = null, id: string = uuid()) {
+        this.title = title;
+        this.order = order;
+        this.description = description;
+        this.userId = userId;
+        this.boardId = boardId;
+        this.columnId = columnId;
+        this.id = id;
+    }
 }
 
-module.exports = Task;
+export {Task};

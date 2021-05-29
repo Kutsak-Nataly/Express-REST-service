@@ -1,5 +1,5 @@
-const {PORT} = require('./common/config');
-const app = require('./app');
+import {PORT} from './common/config';
+import {app}  from './app';
 
 const hostname = 'localhost';
 

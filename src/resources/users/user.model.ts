@@ -1,8 +1,10 @@
-const uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
+
 /**
  * Class representing User
  */
 class User {
+
   /**
    * Create a User
    * @param id {string} - Unique identification number in the database of User
@@ -10,16 +12,16 @@ class User {
    * @param login {string} - Login of User
    * @param password {string} - Secret access code to the application
    */
-  constructor({
-    id = uuid.v4(),
-    name = 'USER',
-    login = 'user',
-    password = 'P@55w0rd'
-  } = {}) {
-    this.id = id;
+  name: string ;
+  login: string;
+  password: string;
+  id?: string;
+
+  constructor(name: string = 'USER', login: string = 'user', password: string = 'P@55w0rd', id: string = uuid()) {
     this.name = name;
     this.login = login;
     this.password = password;
+    this.id = id;
   }
 
   /**
@@ -27,10 +29,10 @@ class User {
    * @param user {User} - Instance class User
    * @returns {{name: *, id: *, login: *}} - Object User without password
    */
-  static toResponse(user) {
-    const { id, name, login } = user;
-    return { id, name, login };
+  static toResponse(user: User) {
+    const {id, name, login} = user;
+    return {id, name, login};
   }
 }
 
-module.exports = User;
+export {User};

@@ -5,8 +5,10 @@
  * @requires removeByBoard
  * @type {{postBoard, getAll, putBoard, getById, deleteById}|*}
  */
-const boardRepo = require('./board.memory.repository');
-const { removeByBoard } = require('../task/task.service');
+import {boardRepo} from './board.memory.repository';
+import {taskService} from '../task/task.service';
+import {Board} from "./board.model";
+
 /**
  * Get all boards
  * @returns {Promise<Board[]>}
@@ -17,27 +19,29 @@ const getAll = () => boardRepo.getAll();
  * @param id {string} - Unique identification parameter of board
  * @returns {Promise<void>}
  */
-const getById = id => boardRepo.getById(id);
+const getById = (id:string) => boardRepo.getById(id);
 /**
  * Create new board
  * @param board {Board} - Instance class Board
  * @returns {Promise<number>}
  */
-const postBoard = board => boardRepo.postBoard(board);
+const postBoard = (board:Board) => boardRepo.postBoard(board);
 /**
  * Edit board
  * @param board {Board} - Instance class Board
  * @returns {Promise<Board[]>}
  */
-const putBoard = board => boardRepo.putBoard(board);
+const putBoard = (board:Board) => boardRepo.putBoard(board);
 /**
  * Delete board by id
  * @param id {string} - Unique identification parameter of board
  * @returns {Promise<void>}
  */
-const deleteById = async id => {
-  await boardRepo.deleteById(id);
-  await removeByBoard(id);
+const deleteById = async (id: string) => {
+    await boardRepo.deleteById(id);
+    await taskService.removeByBoard(id);
 };
 
-module.exports = { getAll, getById, postBoard, putBoard, deleteById };
+const boardService = {getAll, getById, postBoard, putBoard, deleteById};
+
+export {boardService};

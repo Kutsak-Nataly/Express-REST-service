@@ -1,4 +1,5 @@
-const uuid = require('uuid');
+import {v4 as uuid} from 'uuid';
+
 /**
  * Class representing Column
  */
@@ -9,15 +10,15 @@ class Column {
    * @param title {string} - Short name of the column, which is displayed in the column area
    * @param order {number} - Sequential number of the column on the board
    */
-  constructor({
-    id = uuid.v4(),
-    title = 'Title',
-    order = 0,
-  } = {}) {
-    this.id = id;
+  title: string;
+  order: number;
+  id?: string;
+
+  constructor(title: string = 'Title', order: number = 0, id: string = uuid()) {
     this.title = title;
     this.order = order;
+    this.id = id;
   }
 }
 
-module.exports = Column;
+export {Column};

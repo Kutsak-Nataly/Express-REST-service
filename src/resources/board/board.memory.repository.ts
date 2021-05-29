@@ -4,7 +4,8 @@
  * @requires DB
  * @type {{columns, boards, users, tasks}}
  */
-const DB = require('../../datebase/db');
+import {Board} from "./board.model";
+import {DB} from '../../datebase/db';
 
 const {boards} = DB;
 /**
@@ -17,31 +18,32 @@ const getAll = async () => boards;
  * @param id {string} - Unique identification parameter of Board
  * @returns {Promise<void>}
  */
-const getById = async id => boards.find(board => board.id === id);
+const getById = async (id: string) => boards.find((board: Board) => board.id === id);
 /**
  * Create new board
  * @param board {Board} - Instance class Board
  * @returns {Promise<number>}
  */
-const postBoard = async board => boards.push(board);
+const postBoard = async (board: Board) => boards.push(board);
 /**
  * Edit data about Board
  * @param board {Board} - Instance class Board
  * @returns {Promise<Board[]>}
  */
-const putBoard = async board => {
-  const boardOld = boards.find(el => el.id === board.id);
-  return boards.splice(boards.indexOf(boardOld), 1, board);
+const putBoard = async (board: Board) => {
+    const boardIndex = boards.findIndex((el: Board) => el.id === board.id);
+    return boards.splice(boardIndex, 1, board);
 };
 /**
  * Delete board by id
  * @param id {string} - Unique identification parameter of board
  * @returns {Promise<void>}
  */
-const deleteById = async id => {
-  const boardDel = boards.find(board => board.id === id);
-  boards.splice(boards.indexOf(boardDel), 1);
+const deleteById = async (id: string) => {
+    const boardIndex = boards.findIndex((board: Board) => board.id === id);
+    boards.splice(boardIndex, 1);
 };
 
+const boardRepo = {getAll, getById, postBoard, putBoard, deleteById};
 
-module.exports = { getAll, getById, postBoard, putBoard, deleteById };
+export {boardRepo};

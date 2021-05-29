@@ -1,4 +1,5 @@
 node_modules
 jsdoc
+build
 .idea
 .vscode
