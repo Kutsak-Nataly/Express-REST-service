@@ -13,7 +13,7 @@ Additionally used module [docDash](https://github.com/clenemt/docdash)
 
 ## CLI generate JSDoc
 ```$xslt
-node_modules/.bin/jsdoc src -c conf.json
+./node_modules/.bin/jsdoc src -c conf.json
 ```
 ## Generate JSDoc by script
 ```$xslt
