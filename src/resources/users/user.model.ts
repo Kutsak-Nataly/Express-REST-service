@@ -12,7 +12,7 @@ class User {
    * @param login {string} - Login of User
    * @param password {string} - Secret access code to the application
    */
-  name: string ;
+  name: string;
   login: string;
   password: string;
   id?: string;
@@ -29,7 +29,7 @@ class User {
    * @param user {User} - Instance class User
    * @returns {{name: *, id: *, login: *}} - Object User without password
    */
-  static toResponse(user: User) {
+  static toResponse(user: User): { id?: string; name: string; login: string } {
     const {id, name, login} = user;
     return {id, name, login};
   }
