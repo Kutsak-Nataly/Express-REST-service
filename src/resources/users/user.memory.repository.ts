@@ -12,25 +12,25 @@ const {users} = DB;
  * Get all users
  * @returns {Promise<User[]>}
  */
-const getAll = async () => users;
+const getAll = async (): Promise<User[]> => users;
 /**
  * Get user by id
  * @param id {string} - Unique identification parameter of User
  * @returns {Promise<void>}
  */
-const getById = async (id: string) => users.find(user => user.id === id);
+const getById = async (id: string): Promise<User | undefined> => users.find(user => user.id === id);
 /**
  * Create new user
  * @param user {User} - Instance class User
  * @returns {Promise<number>}
  */
-const postUser = async (user: User) => users.push(user);
+const postUser = async (user: User): Promise<number> => users.push(user);
 /**
  * Editing data about user
  * @param user {User} - Instance class User
  * @returns {Promise<User[]>}
  */
-const putUser = async (user: User) => {
+const putUser = async (user: User): Promise<void> => {
     const userIndex = users.findIndex(el => el.id === user.id);
     if (userIndex !== -1) {
         users.splice(userIndex, 1, user);
@@ -41,7 +41,7 @@ const putUser = async (user: User) => {
  * @param id {string} - Unique identification parameter of User
  * @returns {Promise<void>}
  */
-const deleteById = async (id: string) => {
+const deleteById = async (id: string): Promise<void> => {
     const userIndex = users.findIndex(user => user.id === id);
     if (userIndex !== -1) {
         users.splice(userIndex, 1);

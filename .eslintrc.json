@@ -6,27 +6,32 @@
     "jest": true,
     "node": true
   },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 2020,
     "ecmaFeatures": {
       "impliedStrict": true
-    }
+    },
+    "project": "tsconfig.json"
   },
   "settings": {
     "noInlineConfig": true,
-    "import/resolver": {
-      "node": {
-        "paths": [
-          "src"
-        ]
-      }
+    "node": {
+      "tryExtensions": [
+        ".js",
+        ".json",
+        ".node",
+        ".ts",
+        ".d.ts"
+      ]
     }
   },
   "extends": [
     "eslint:recommended",
+    "airbnb-typescript/base",
     "plugin:node/recommended",
-    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
   "rules": {
@@ -34,6 +39,9 @@
     "linebreak-style": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "no-underscore-dangle": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "lines-between-class-members": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-inferrable-types": "off"
   }
 }

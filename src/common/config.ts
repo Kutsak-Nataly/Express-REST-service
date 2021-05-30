@@ -1,4 +1,4 @@
-import dotEnv from 'dotenv';
+import * as dotEnv from 'dotenv';
 import path from 'path';
 
 dotEnv.config({

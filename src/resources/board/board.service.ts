@@ -13,31 +13,31 @@ import {Board} from "./board.model";
  * Get all boards
  * @returns {Promise<Board[]>}
  */
-const getAll = () => boardRepo.getAll();
+const getAll = (): Promise<Board[]> => boardRepo.getAll();
 /**
  * Get board by id
  * @param id {string} - Unique identification parameter of board
- * @returns {Promise<void>}
+ * @returns {Promise<Board | undefined>}
  */
-const getById = (id:string) => boardRepo.getById(id);
+const getById = (id:string): Promise<Board | undefined> => boardRepo.getById(id);
 /**
  * Create new board
  * @param board {Board} - Instance class Board
  * @returns {Promise<number>}
  */
-const postBoard = (board:Board) => boardRepo.postBoard(board);
+const postBoard = (board:Board): Promise<number> => boardRepo.postBoard(board);
 /**
  * Edit board
  * @param board {Board} - Instance class Board
  * @returns {Promise<Board[]>}
  */
-const putBoard = (board:Board) => boardRepo.putBoard(board);
+const putBoard = (board:Board): Promise<Board[]> => boardRepo.putBoard(board);
 /**
  * Delete board by id
  * @param id {string} - Unique identification parameter of board
  * @returns {Promise<void>}
  */
-const deleteById = async (id: string) => {
+const deleteById = async (id: string): Promise<void> => {
     await boardRepo.deleteById(id);
     await taskService.removeByBoard(id);
 };

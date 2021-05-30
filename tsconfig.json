@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2020",
-    "module": "es2020",
+    "module": "commonjs",
     "allowJs": false,
     "outDir": "./build",
     "rootDir": "./src",
@@ -23,9 +23,6 @@
     "removeComments": true,
     "lib": ["es2020"]
   },
-  "files": [
-    "src/merging/custom.express.ts"
-  ],
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

@@ -19,8 +19,11 @@ class DataBase {
      * @param columns {Column[]} - Array of instance from class Column
      */
     users: User[];
+
     boards: Board[];
+
     tasks: Task[];
+
     columns: Column[];
 
     constructor(users: User[] = [], boards: Board[] = [], tasks: Task[] = [], columns: Column[] = []) {

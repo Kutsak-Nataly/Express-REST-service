@@ -29,12 +29,12 @@ router.route('/').post(async (req: Request, res: Response) => {
 });
 
 router.route('/:id').put(async (req: Request, res: Response) => {
-    const user = new User (
+    const user = new User(
         req.body.name,
         req.body.login,
         req.body.password,
-    req.params['id']
-);
+        req.params['id']
+    );
     await usersService.putUser(user);
     res.status(200).json(user);
 });
