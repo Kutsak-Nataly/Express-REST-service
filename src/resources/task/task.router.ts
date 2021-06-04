@@ -1,17 +1,17 @@
-import express from 'express';
+import express, {Request, Response} from 'express';
 import {Task} from './task.model';
 import {taskService} from './task.service';
 
-const router = express.Router({mergeParams: true});
+const router = express.Router({ mergeParams: true });
 
-router.route('/').get(async (req, res) => {
+router.route('/').get(async (req: Request, res: Response) => {
   if (req.params['boardId']) {
     const tasks = await taskService.getAll(req.params['boardId']);
     res.status(200).json(tasks);
   }
 });
 
-router.route('/:id').get(async (req, res) => {
+router.route('/:id').get(async (req: Request, res: Response) => {
   if (req.params['boardId'] && req.params['id']) {
     const task = await taskService.getById(req.params['boardId'], req.params['id']);
     if (task) {
@@ -22,7 +22,7 @@ router.route('/:id').get(async (req, res) => {
   }
 });
 
-router.route('/').post(async (req, res) => {
+router.route('/').post(async (req: Request, res: Response) => {
   const task = new Task(
       req.body.title,
       req.body.order,
@@ -35,7 +35,7 @@ router.route('/').post(async (req, res) => {
   res.status(201).json(task);
 });
 
-router.route('/:id').put(async (req, res) => {
+router.route('/:id').put(async (req: Request, res: Response) => {
   const task = new Task(
       req.body.title,
       req.body.order,
@@ -49,7 +49,7 @@ router.route('/:id').put(async (req, res) => {
   res.status(200).json(task);
 });
 
-router.route('/:id').delete(async (req, res) => {
+router.route('/:id').delete(async (req: Request, res: Response) => {
   if (req.params['boardId'] && req.params['id']) {
     const task = await taskService.deleteById(req.params['boardId'], req.params['id']);
     res.status(200).json(task);

@@ -6,8 +6,7 @@ const router = express.Router();
 
 router.route('/').get(async (_req: Request, res: Response) => {
     const users = await usersService.getAll();
-    res.json(users.map(User.toResponse));
-    res.status(200).json(users);
+    res.status(200).json(users.map(User.toResponse));
 });
 
 router.route('/:id').get(async (req: Request, res: Response) => {
