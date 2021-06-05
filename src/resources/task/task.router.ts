@@ -1,5 +1,4 @@
 import express, {Request, Response} from 'express';
-import {getReasonPhrase, StatusCodes} from 'http-status-codes'
 import {Task} from './task.model';
 import {taskService} from './task.service';
 
@@ -8,7 +7,7 @@ const router = express.Router({ mergeParams: true });
 router.route('/').get(async (req: Request, res: Response) => {
   if (req.params['boardId']) {
     const tasks = await taskService.getAll(req.params['boardId']);
-    res.status(StatusCodes.OK).json(tasks);
+    res.status(200).json(tasks);
   }
 });
 
@@ -18,7 +17,7 @@ router.route('/:id').get(async (req: Request, res: Response) => {
     if (task) {
       res.status(201).json(task);
     } else {
-      res.status(404).json({message: getReasonPhrase(StatusCodes.NOT_FOUND)});
+      res.status(404).json({message: 'Not found'});
     }
   }
 });
