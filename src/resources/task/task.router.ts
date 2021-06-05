@@ -1,6 +1,7 @@
-import express, {Request, Response} from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 import {Task} from './task.model';
 import {taskService} from './task.service';
+import {MyError} from '../../common/myError';
 
 const router = express.Router({ mergeParams: true });
 
@@ -11,13 +12,14 @@ router.route('/').get(async (req: Request, res: Response) => {
   }
 });
 
-router.route('/:id').get(async (req: Request, res: Response) => {
+router.route('/:id').get(async (req: Request, res: Response, next:NextFunction) => {
   if (req.params['boardId'] && req.params['id']) {
     const task = await taskService.getById(req.params['boardId'], req.params['id']);
     if (task) {
-      res.status(201).json(task);
+      res.status(200).json(task);
     } else {
-      res.status(404).json({message: 'Not found'});
+      const err = new MyError('User Not task', 'validation', 404 );
+      next(err);
     }
   }
 });

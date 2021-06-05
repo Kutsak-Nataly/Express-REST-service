@@ -1,2 +1,23 @@
 1622908405995 	Type: error 	GET 	404 	/users/6?dfg=44 	User Not found
 1622908892426 	Type: error 	GET 	404 	/users/7 	User Not found
+1622917181805 	Type: error 	GET 	404 	/users/7 	User Not found 	Error: User Not found
+    at D:\work\node\Express-REST-service\src\resources\users\user.router.ts:21:25
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202386 	Type: validation 	GET 	404 	/boards/2d8a4ff5-5ae2-498a-ade3-fe8f752c519c/tasks/3e494aea-3272-4f33-ad84-de65fd9c0a2c 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202393 	Type: validation 	GET 	404 	/boards/2d8a4ff5-5ae2-498a-ade3-fe8f752c519c/tasks/551e5ef3-2bc9-493d-869c-327b3fd52d55 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202394 	Type: validation 	GET 	404 	/boards/2d8a4ff5-5ae2-498a-ade3-fe8f752c519c/tasks/37e638cf-4b83-427e-b9de-2166bc73d143 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202395 	Type: validation 	GET 	404 	/boards/2d8a4ff5-5ae2-498a-ade3-fe8f752c519c/tasks/8a4ca88c-b935-4f5b-9a32-81771dd7114b 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202396 	Type: validation 	GET 	404 	/boards/2d8a4ff5-5ae2-498a-ade3-fe8f752c519c/tasks/639f0d07-5a82-45d2-83d6-61386f189559 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+1622918202807 	Type: validation 	GET 	404 	/boards/0b3b46c6-1834-48ec-be06-28edaa8a6d99/tasks/2f646b66-1486-4294-86ce-f335c94c4fde 	User Not task 	Error: User Not task
+    at D:\work\node\Express-REST-service\src\resources\task\task.router.ts:21:19
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)

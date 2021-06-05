@@ -11,12 +11,13 @@ const errorLog = (error: Error | MyError, req: Request, _res: Response, next: Ne
         encoding: 'utf8'
     });
     const {method, url} = req;
-    let data = '';
+    let typeError = 'other';
+    let statusError = 500;
     if(error instanceof MyError) {
-        data = `${start} \tType: ${error.type} \t${method} \t${error.status} \t${url} \t${error.message}\n`;
-    } else {
-        data = `${start} \tType: other \t${method} \t500 \t${url} \t${error.message}\n`;
+        typeError = error.type;
+        statusError = error.status;
     }
+    const data = `${start} \tType: ${typeError} \t${method} \t${statusError} \t${url} \t${error.message} \t${error.stack}\n`;
     writeStream1.write(data);
     next(error);
 };

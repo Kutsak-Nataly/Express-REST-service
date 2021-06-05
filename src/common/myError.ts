@@ -3,13 +3,13 @@ const enum TypeError {
     warn,
     info,
     http,
-    verbose,
+    validation,
     debug,
 }
 type Type = keyof typeof TypeError;
 
 class MyError extends Error {
-    constructor(message: string, type: "error" | "warn" | "info" | "http" | "verbose" | "debug" , status: number) {
+    constructor(message: string, type: "error" | "warn" | "info" | "http" | "validation" | "debug" , status: number) {
         super(message);
         this.type = type;
         this.status = status;

@@ -18,7 +18,7 @@ router.route('/:id').get(async (req: Request, res: Response, next: NextFunction)
             res.json(User.toResponse(user));
             res.status(200).json(user);
         } else {
-            const err = new MyError('User Not found', 'error', 404 );
+            const err = new MyError('User Not found', 'validation', 404 );
             next(err);
         }
     }
