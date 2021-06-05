@@ -16,9 +16,9 @@ router.route('/:id').get(async (req: Request, res: Response) => {
   if (req.params['boardId'] && req.params['id']) {
     const task = await taskService.getById(req.params['boardId'], req.params['id']);
     if (task) {
-      res.status(StatusCodes.OK).json(task);
+      res.status(201).json(task);
     } else {
-      res.status(StatusCodes.NOT_FOUND).json({message: getReasonPhrase(StatusCodes.NOT_FOUND)});
+      res.status(404).json({message: getReasonPhrase(StatusCodes.NOT_FOUND)});
     }
   }
 });
@@ -33,7 +33,7 @@ router.route('/').post(async (req: Request, res: Response) => {
       req.body.columnId
   );
   await taskService.postTask(task);
-  res.status(StatusCodes.CREATED).json(task);
+  res.status(201).json(task);
 });
 
 router.route('/:id').put(async (req: Request, res: Response) => {
@@ -47,13 +47,13 @@ router.route('/:id').put(async (req: Request, res: Response) => {
       req.params['id'],
   );
   await taskService.putTask(task);
-  res.status(StatusCodes.OK).json(task);
+  res.status(200).json(task);
 });
 
 router.route('/:id').delete(async (req: Request, res: Response) => {
   if (req.params['boardId'] && req.params['id']) {
     const task = await taskService.deleteById(req.params['boardId'], req.params['id']);
-    res.status(StatusCodes.OK).json(task);
+    res.status(200).json(task);
   }
 });
 export {router};
