@@ -2,13 +2,19 @@ import express, {NextFunction, Request, Response} from 'express';
 import {boardService} from './board.service';
 import {Board} from './board.model';
 import {Column} from '../columns/column.model';
-import {MyError} from '../../common/myError';
+import {MyError} from '../../error_handler/myError';
 
 const router = express.Router();
 
-router.route('/').get(async (_req: Request, res: Response) => {
+router.route('/').get(async (_req: Request, res: Response, next: NextFunction) => {
   const board = await boardService.getAll();
-  res.status(200).json(board);
+  if (board) {
+    res.status(200).json(board);
+  } else {
+    const err = new MyError('Boards Not found', 'error', 404);
+    next(err);
+  }
+
 });
 
 router.route('/:boardId').get(async (req: Request, res: Response, next: NextFunction) => {
@@ -17,7 +23,7 @@ router.route('/:boardId').get(async (req: Request, res: Response, next: NextFunc
     if (board) {
       res.status(200).json(board);
     } else {
-      const err = new MyError('Board Not found', 'error', 404 );
+      const err = new MyError('Board Not found', 'error', 404);
       next(err);
     }
   }
@@ -60,10 +66,13 @@ router.route('/:id').put(async (req: Request, res: Response) => {
   res.status(200).json(board);
 });
 
-router.route('/:id').delete(async (req: Request, res: Response) => {
+router.route('/:id').delete(async (req: Request, res: Response, next: NextFunction) => {
   if (req.params['id']) {
     await boardService.deleteById(req.params['id']);
     res.status(200).send('delete board by ID successfully completed');
+  } else {
+    const err = new MyError('Bad Request for delete board by id', 'validation', 400);
+    next(err);
   }
 });
 

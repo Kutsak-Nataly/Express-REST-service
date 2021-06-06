@@ -3,9 +3,9 @@ import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
 import * as fs from 'fs';
-import {infoLog} from './middleware/log-info';
-import {errorLog} from './middleware/log-error';
-import {clientErrorHandler} from './middleware/client-error-handler';
+import {infoLog} from './error_handler/log-info';
+import {errorLog} from './error_handler/log-error';
+import {clientErrorHandler} from './error_handler/client-error-handler';
 import {router as userRouter} from './resources/users/user.router';
 import {router as boardRouter} from './resources/board/board.router';
 import {router as taskRouter} from './resources/task/task.router';
@@ -29,7 +29,7 @@ app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 app.use('/boards/:boardId/tasks', taskRouter);
 app.use('/404', (_req, res) => {
-    res.send('<h1>Страница не найдена - 404</h1>')
+    res.send('<h1>Page not found - 404</h1>')
 });
 app.use('*', (_req, res) => {
     res.redirect('404');

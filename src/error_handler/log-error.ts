@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from 'express';
 import * as fs from "fs";
 import path from "path";
-import {MyError} from '../common/myError';
+import {MyError} from './myError';
 
 const errorLog = (error: Error | MyError, req: Request, _res: Response, next: NextFunction): void => {
     const pathToLoggerError = path.join(__dirname, '..', '..', 'log','error.log');

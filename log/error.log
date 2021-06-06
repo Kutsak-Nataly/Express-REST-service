@@ -1,9 +1,2 @@
-1622979929037 	Type: error 	GET 	404 	/users/7 	User Not found
-1622985753313 	Type: error 	GET 	404 	/users/4 	User Not found
-1622986202411 	Type: error 	GET 	404 	/boards/4a9c2b28-1fda-4416-b033-4e9b1dee2a25 	Board Not found
-1622986202438 	Type: error 	GET 	404 	/boards/84c0b06e-d6be-4d06-a6e4-c6605e985344/tasks/2dfc8b9c-307c-4867-8be2-c46573bf36b3 	Task Not found
-1622986202439 	Type: error 	GET 	404 	/boards/84c0b06e-d6be-4d06-a6e4-c6605e985344/tasks/531ecc90-f74c-447b-b929-1140bcd4e683 	Task Not found
-1622986202439 	Type: error 	GET 	404 	/boards/84c0b06e-d6be-4d06-a6e4-c6605e985344/tasks/dd4f1b96-a920-4896-a19c-080c5e8738f3 	Task Not found
-1622986202440 	Type: error 	GET 	404 	/boards/84c0b06e-d6be-4d06-a6e4-c6605e985344/tasks/e5f5f425-a83d-4311-8214-3b13307f5356 	Task Not found
-1622986202441 	Type: error 	GET 	404 	/boards/84c0b06e-d6be-4d06-a6e4-c6605e985344/tasks/5564b7ab-d2a8-4463-ab77-8d5cb43690cc 	Task Not found
-1622986203090 	Type: error 	GET 	404 	/boards/1665c476-b711-4363-92e0-96802c998eb1/tasks/db50941d-af34-414f-9b08-b1619eb43faf 	Task Not found
+1622992551952 	Type: error 	GET 	404 	/users/3 	User Not found
+1622992582900 	Type: error 	GET 	404 	/boards/5 	Board Not found
