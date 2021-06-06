@@ -18,7 +18,7 @@ class MyError extends Error {
 
     type: Type;
     status: number;
-    message: string
+    message: string;
 }
 
 export {MyError};

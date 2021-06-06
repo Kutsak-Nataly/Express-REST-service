@@ -18,19 +18,19 @@ router.route('/:id').get(async (req: Request, res: Response, next: NextFunction)
             res.json(User.toResponse(user));
             res.status(200).json(user);
         } else {
-            const err = new MyError('User Not found', 'validation', 404 );
+            const err = new MyError('User Not found', 'error', 404 );
             next(err);
         }
     }
 });
 
-router.route('/').post(async (req: Request, res: Response) => {
+router.route('/').post(async (req: Request, res: Response): Promise<void> => {
     const user = new User(req.body.name, req.body.login, req.body.password);
     await usersService.postUser(user);
     res.status(201).json(User.toResponse(user));
 });
 
-router.route('/:id').put(async (req: Request, res: Response) => {
+router.route('/:id').put(async (req: Request, res: Response): Promise<void> => {
     const user = new User(
         req.body.name,
         req.body.login,
@@ -41,7 +41,7 @@ router.route('/:id').put(async (req: Request, res: Response) => {
     res.status(200).json(user);
 });
 
-router.route('/:id').delete(async (req: Request, res: Response) => {
+router.route('/:id').delete(async (req: Request, res: Response): Promise<void> => {
     if (req.params['id']) {
         await usersService.deleteById(req.params['id']);
         res.status(200).send('delete user by ID successfully completed');

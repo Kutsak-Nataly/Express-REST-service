@@ -18,7 +18,7 @@ router.route('/:id').get(async (req: Request, res: Response, next:NextFunction) 
     if (task) {
       res.status(200).json(task);
     } else {
-      const err = new MyError('User Not task', 'validation', 404 );
+      const err = new MyError('Task Not found', 'error', 404 );
       next(err);
     }
   }

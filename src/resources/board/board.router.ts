@@ -1,7 +1,8 @@
-import express, {Request, Response} from 'express';
+import express, {NextFunction, Request, Response} from 'express';
 import {boardService} from './board.service';
 import {Board} from './board.model';
 import {Column} from '../columns/column.model';
+import {MyError} from '../../common/myError';
 
 const router = express.Router();
 
@@ -10,13 +11,14 @@ router.route('/').get(async (_req: Request, res: Response) => {
   res.status(200).json(board);
 });
 
-router.route('/:boardId').get(async (req: Request, res: Response) => {
+router.route('/:boardId').get(async (req: Request, res: Response, next: NextFunction) => {
   if (req.params['boardId']) {
     const board = await boardService.getById(req.params['boardId']);
     if (board) {
       res.status(200).json(board);
     } else {
-      res.status(404).json({message: 'Not found'});
+      const err = new MyError('Board Not found', 'error', 404 );
+      next(err);
     }
   }
 
