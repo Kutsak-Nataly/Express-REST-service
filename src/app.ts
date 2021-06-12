@@ -14,7 +14,6 @@ const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
 app.use(express.json());
-
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
     if (req.originalUrl === '/') {
@@ -29,7 +28,7 @@ app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 app.use('/boards/:boardId/tasks', taskRouter);
 app.use('/404', (_req, res) => {
-    res.send('<h1>Page not found - 404</h1>')
+    res.send('<h1>Страница не найдена - 404</h1>')
 });
 app.use('*', (_req, res) => {
     res.redirect('404');

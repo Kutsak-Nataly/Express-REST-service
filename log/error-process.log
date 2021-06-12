@@ -1,23 +1,16 @@
-Caught exception: Oops!!!!
- Error: Oops!!!!
-    at Object.<anonymous> (D:\work\node\Express-REST-service\src\app.ts:63:7)
-    at Module._compile (internal/modules/cjs/loader.js:1063:30)
-    at Module.m._compile (C:\Program Files\nodejs\node_modules\ts-node\src\index.ts:1295:23)
-    at Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
-    at Object.require.extensions.<computed> [as .ts] (C:\Program Files\nodejs\node_modules\ts-node\src\index.ts:1298:12)
-    at Module.load (internal/modules/cjs/loader.js:928:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
-    at Module.require (internal/modules/cjs/loader.js:952:19)
-    at require (internal/modules/cjs/helpers.js:88:18)
-    at Object.<anonymous> (D:\work\node\Express-REST-service\src\server.ts:2:1)Error: Oops!
-    at Object.<anonymous> (D:\work\node\Express-REST-service\src\app.ts:64:16)
-    at Module._compile (internal/modules/cjs/loader.js:1063:30)
-    at Module.m._compile (C:\Program Files\nodejs\node_modules\ts-node\src\index.ts:1295:23)
-    at Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
-    at Object.require.extensions.<computed> [as .ts] (C:\Program Files\nodejs\node_modules\ts-node\src\index.ts:1298:12)
-    at Module.load (internal/modules/cjs/loader.js:928:32)
-    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
-    at Module.require (internal/modules/cjs/loader.js:952:19)
-    at require (internal/modules/cjs/helpers.js:88:18)
-    at Object.<anonymous> (D:\work\node\Express-REST-service\src\server.ts:2:1)
-Error: Oops!
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:558:11)
+    at ServerResponse.header (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:267:15)
+    at D:\work\node\Express-REST-service\src\resources\users\user.router.ts:24:29
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (_http_outgoing.js:558:11)
+    at ServerResponse.header (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:771:10)
+    at ServerResponse.send (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:170:12)
+    at ServerResponse.json (D:\work\node\Express-REST-service\node_modules\express\lib\response.js:267:15)
+    at D:\work\node\Express-REST-service\src\resources\users\user.router.ts:24:29
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
