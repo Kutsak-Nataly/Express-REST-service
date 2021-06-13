@@ -1,38 +1,36 @@
-version: "1.0"
+version: "3"
 services:
   db:
-    image: postgres:13.3-alpine
-    restart: on-failure
+    container_name: task6_bd
+    build: ./database
     networks:
-      - my-bringe
+      - my-net
+    restart: always
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_PORT: ${POSTGRES_PORT}
-    # Add volumes to allow backup of config, logs and databases
     volumes:
-      - ./postgresql-config:/etc/postgresql
-      - ./postgresql-logs:/var/log/postgresql
-      - ./postgresql-db:/var/lib/postgresql
+      - ./postgresql-db:/var/lib/postgresql/data
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
   app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      target: base
-    volumes:
-      - ./log:/dist/log
-      - ./srs:/dist/src
-    restart: on-failure
+    container_name: task6
+    build: .
     networks:
-      - my-bringe
+      - my-net
+    volumes:
+      - ./log:/app/log
+      - ./srs:/app/src
+    restart: always
+    environment:
+      - PORT=${PORT}
     expose:
       - ${PORT}
     ports:
       - ${PORT}:${PORT}
-    command: npm run dev
     depends_on:
       - db
-
+networks:
+  my-net:
+    driver: bridge

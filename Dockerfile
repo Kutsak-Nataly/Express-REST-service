@@ -1,6 +1,6 @@
 FROM node:14-alpine
 LABEL maintainer="artworknataly@gmail.com"
-WORKDIR ./dist
+WORKDIR ./app
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY nodemon.json ./
