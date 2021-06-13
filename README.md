@@ -1,23 +1,19 @@
-# EXPRESS REST API
-### The development pattern is used - division into layers:
-1. Processing requests and responses from the browser
-2. Services in which the business logic of the application is processed
-3. Accessing the database directly 
-
+# Docker basics
 ***
 ## Used
-Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
-## JsDoc
-To create documentation for the application, the module was used [JsDoc](https://www.npmjs.com/package/jsdoc).
-Additionally used module [docDash](https://github.com/clenemt/docdash)
-
-## CLI generate JSDoc
+* Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
+* Select branch Docker
+* Run command from the root disk of the project
 ```$xslt
-./node_modules/.bin/jsdoc src -c conf.json
+docker-compose up
 ```
-## Generate JSDoc by script
+* Run command to build container from image app
 ```$xslt
-npm run doc
+docker run –d --rm –p 4000:4000 <id-app>
 ```
+### Files
+Dockerfile for PostgreSQ -> database/Dockerfile
+Dockerfile for nodejs app -> . /Dockerfile
 
+### Docker Hub
 
