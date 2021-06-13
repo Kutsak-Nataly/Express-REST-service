@@ -5,3 +5,4 @@
 1623508269371 	Type: error 	GET 	404 	/boards/74c017c8-ad3d-4ec1-bca9-98df29211ffb/tasks/fbc2eea6-fc0a-4fed-9fc1-1609973dda25 	Task Not found
 1623508269372 	Type: error 	GET 	404 	/boards/74c017c8-ad3d-4ec1-bca9-98df29211ffb/tasks/de2f48b9-8ee5-40b2-ac5e-31c759c087e8 	Task Not found
 1623508269566 	Type: error 	GET 	404 	/boards/46b0bb9e-d56a-4cfe-a17e-456d877d7a22/tasks/43a40f29-8bdf-41d4-a255-16de5128c84e 	Task Not found
+1623514489658 	Type: error 	GET 	404 	/users/1 	User Not found

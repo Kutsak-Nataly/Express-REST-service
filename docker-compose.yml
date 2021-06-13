@@ -1,16 +1,38 @@
 version: "1.0"
 services:
-  ts-node-docker:
+  db:
+    image: postgres:13.3-alpine
+    restart: on-failure
+    networks:
+      - my-bringe
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+    # Add volumes to allow backup of config, logs and databases
+    volumes:
+      - ./postgresql-config:/etc/postgresql
+      - ./postgresql-logs:/var/log/postgresql
+      - ./postgresql-db:/var/lib/postgresql
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
+  app:
     build:
       context: .
       dockerfile: Dockerfile
       target: base
     volumes:
-      - ./src:/home/node/app/src
-      - ./nodemon.json:/home/node/app/nodemon.json
-    container_name: ts-node-docker
+      - ./log:/dist/log
+      - ./srs:/dist/src
+    restart: on-failure
+    networks:
+      - my-bringe
     expose:
-      - '4000'
+      - ${PORT}
     ports:
-      - '4000:4000'
+      - ${PORT}:${PORT}
     command: npm run dev
+    depends_on:
+      - db
+

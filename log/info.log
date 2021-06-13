@@ -74,3 +74,5 @@
 1623508269563	DELETE 	 body: {}	/boards/46b0bb9e-d56a-4cfe-a17e-456d877d7a22/tasks/43a40f29-8bdf-41d4-a255-16de5128c84e	 query: {} 	200 	[0ms]
 1623508269565	GET 	 body: {}	/boards/46b0bb9e-d56a-4cfe-a17e-456d877d7a22/tasks/43a40f29-8bdf-41d4-a255-16de5128c84e	 query: {} 	404 	[1ms]
 1623508269568	DELETE 	 body: {}	/boards/46b0bb9e-d56a-4cfe-a17e-456d877d7a22	 query: {} 	200 	[0ms]
+1623508697390	GET 	 body: {}	/users/9e46999a-d835-499d-8ad7-18cc1485e31f	 query: {} 	200 	[1ms]
+1623514489521	GET 	 body: {}	/users/1	 query: {} 	404 	[522ms]
