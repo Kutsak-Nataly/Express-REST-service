@@ -21,7 +21,7 @@ services:
       - my-net
     volumes:
       - ./log:/app/log
-      - ./srs:/app/src
+      - ./src:/app/src
     restart: always
     environment:
       - PORT=${PORT}
@@ -34,3 +34,5 @@ services:
 networks:
   my-net:
     driver: bridge
+volumes:
+  postgresql-db:

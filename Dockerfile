@@ -4,9 +4,9 @@ WORKDIR ./app
 COPY package*.json ./
 COPY tsconfig.json ./
 COPY nodemon.json ./
-RUN npm install && npm cache clean --force
+RUN npm install
 COPY . .
 EXPOSE ${PORT}
-CMD ["npm", "start"]
+CMD ["npm", "run", "start-nodemon"]
 
 
