@@ -1,7 +1,7 @@
 import express, {NextFunction, Request, Response} from 'express';
 import {boardService} from './board.service';
 import {Board} from './board.model';
-import {Column} from '../columns/column.model';
+import {ColumnBoard} from '../columns/column.model';
 import {MyError} from '../../error_handler/myError';
 
 const router = express.Router();
@@ -48,7 +48,7 @@ router.route('/').post(async (req: Request, res: Response) => {
 });
 
 router.route('/:id').put(async (req: Request, res: Response) => {
-  const columns: Column[] = [];
+  const columns: ColumnBoard[] = [];
   for (let i = 0; i < req.body.columns.length; i += 1) {
     const column = new Column(
         req.body.columns[i].title,

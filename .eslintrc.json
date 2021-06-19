@@ -18,6 +18,10 @@
   "settings": {
     "noInlineConfig": true,
     "node": {
+      "resolvePaths": [
+        "./node_modules",
+        "./src"
+      ],
       "tryExtensions": [
         ".js",
         ".json",

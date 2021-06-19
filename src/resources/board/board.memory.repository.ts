@@ -1,5 +1,5 @@
 import {Board} from './board.model';
-import {DB} from '../../datebase/db';
+import {DB} from '../../database/db';
 
 const {boards} = DB;
 const getAll = async (): Promise<Board[]> => boards;

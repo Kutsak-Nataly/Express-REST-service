@@ -1,7 +1,7 @@
 import {User} from '../resources/users/user.model';
 import {Board} from '../resources/board/board.model';
 import {Task} from '../resources/task/task.model';
-import {Column} from '../resources/columns/column.model';
+import {ColumnBoard} from '../resources/columns/column.model';
 import {DataBase} from './db.module';
 
 const DB = new DataBase();
@@ -9,7 +9,7 @@ const DB = new DataBase();
 (() => {
     const user = new User();
     DB.users.push(user);
-    const column = new Column();
+    const column = new ColumnBoard();
     DB.columns.push(column);
     const board = new Board('Board 1', [column]);
     DB.boards.push(board);

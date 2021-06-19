@@ -1,4 +1,4 @@
-import {DB} from '../../datebase/db';
+import {DB} from '../../database/db';
 import {Task} from "./task.model";
 
 const {tasks} = DB;

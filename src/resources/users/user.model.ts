@@ -1,9 +1,17 @@
 import {v4 as uuid} from 'uuid';
+import {Column, Entity, PrimaryColumn} from 'typeorm';
 
+type UserPublic = Omit<User, 'password'>;
+
+@Entity()
 class User {
+  @Column()
   name: string;
+  @Column()
   login: string;
+  @Column()
   password: string;
+  @PrimaryColumn('uuid')
   id?: string;
 
   constructor(name: string = 'USER', login: string = 'user', password: string = 'P@55w0rd', id: string = uuid()) {
@@ -13,7 +21,7 @@ class User {
     this.id = id;
   }
 
-  static toResponse(user: User): { id?: string; name: string; login: string } {
+  static toResponse(user: User): UserPublic {
     const {id, name, login} = user;
     return {id, name, login};
   }

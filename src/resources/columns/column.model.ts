@@ -1,8 +1,14 @@
+import {Column, Entity, PrimaryColumn} from 'typeorm';
 import {v4 as uuid} from 'uuid';
 
-class Column {
+@Entity()
+class ColumnBoard {
+
+  @Column()
   title: string;
+  @Column()
   order: number;
+  @PrimaryColumn('uuid')
   id?: string;
 
   constructor(title: string = 'Title', order: number = 0, id: string = uuid()) {
@@ -12,4 +18,4 @@ class Column {
   }
 }
 
-export {Column};
+export {ColumnBoard};
