@@ -33,7 +33,7 @@ router.route('/:boardId').get(async (req: Request, res: Response, next: NextFunc
 router.route('/').post(async (req: Request, res: Response) => {
   const columns = [];
   for (let i = 0; i < req.body.columns.length; i += 1) {
-    const column = new Column(
+    const column = new ColumnBoard(
         req.body.columns[i].title,
         req.body.columns[i].order
     );
@@ -50,7 +50,7 @@ router.route('/').post(async (req: Request, res: Response) => {
 router.route('/:id').put(async (req: Request, res: Response) => {
   const columns: ColumnBoard[] = [];
   for (let i = 0; i < req.body.columns.length; i += 1) {
-    const column = new Column(
+    const column = new ColumnBoard(
         req.body.columns[i].title,
         req.body.columns[i].order,
         req.body.columns[i].id

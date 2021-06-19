@@ -57,3 +57,41 @@ Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the cli
     at D:\work\node\Express-REST-service\src\resources\users\user.router.ts:24:29
     at processTicksAndRejections (internal/process/task_queues.js:93:5)
 Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Caught exception: ⨯ Unable to compile TypeScript:
+[96msrc/db.ts[0m:[93m1[0m:[93m27[0m - [91merror[0m[90m TS6133: [0m'getConnection' is declared but its value is never read.
+
+[7m1[0m import {createConnection, getConnection} from 'typeorm';
+[7m [0m [91m                          ~~~~~~~~~~~~~[0m
+[96msrc/db.ts[0m:[93m14[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'isConnected' does not exist on type 'never'.
+
+[7m14[0m             if (!connection.isConnected) await connection.connect;
+[7m  [0m [91m                            ~~~~~~~~~~~[0m
+[96msrc/db.ts[0m:[93m14[0m:[93m59[0m - [91merror[0m[90m TS2339: [0mProperty 'connect' does not exist on type 'never'.
+
+[7m14[0m             if (!connection.isConnected) await connection.connect;
+[7m  [0m [91m                                                          ~~~~~~~[0m
+
+ TSError: ⨯ Unable to compile TypeScript:
+[96msrc/db.ts[0m:[93m1[0m:[93m27[0m - [91merror[0m[90m TS6133: [0m'getConnection' is declared but its value is never read.
+
+[7m1[0m import {createConnection, getConnection} from 'typeorm';
+[7m [0m [91m                          ~~~~~~~~~~~~~[0m
+[96msrc/db.ts[0m:[93m14[0m:[93m29[0m - [91merror[0m[90m TS2339: [0mProperty 'isConnected' does not exist on type 'never'.
+
+[7m14[0m             if (!connection.isConnected) await connection.connect;
+[7m  [0m [91m                            ~~~~~~~~~~~[0m
+[96msrc/db.ts[0m:[93m14[0m:[93m59[0m - [91merror[0m[90m TS2339: [0mProperty 'connect' does not exist on type 'never'.
+
+[7m14[0m             if (!connection.isConnected) await connection.connect;
+[7m  [0m [91m                                                          ~~~~~~~[0m
+
+    at createTSError (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:587:12)
+    at reportTSError (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:591:19)
+    at getOutput (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:921:36)
+    at Object.compile (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:1189:32)
+    at Module.m._compile (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:1295:42)
+    at Module._extensions..js (internal/modules/cjs/loader.js:1092:10)
+    at Object.require.extensions.<computed> [as .ts] (D:\work\node\Express-REST-service\node_modules\ts-node\src\index.ts:1298:12)
+    at Module.load (internal/modules/cjs/loader.js:928:32)
+    at Function.Module._load (internal/modules/cjs/loader.js:769:14)
+    at Module.require (internal/modules/cjs/loader.js:952:19)

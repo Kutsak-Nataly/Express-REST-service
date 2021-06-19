@@ -1,5 +1,8 @@
 import {v4 as uuid} from 'uuid';
-import {Column, Entity, PrimaryColumn} from 'typeorm';
+import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from 'typeorm';
+import {Board} from '../board/board.model';
+import {User} from '../users/user.model';
+import {ColumnBoard} from '../columns/column.model';
 
 @Entity()
 class Task {
@@ -9,11 +12,14 @@ class Task {
     order: number;
     @Column()
     description: string;
-    @Column()
+    @OneToOne(() => User, user => user.id)
+    @JoinColumn()
     userId: string | null;
-    @Column()
+    @OneToOne(() => Board, board => board.id)
+    @JoinColumn()
     boardId: string;
-    @Column()
+    @OneToOne(() => ColumnBoard, column => column.id)
+    @JoinColumn()
     columnId: string | null;
     @PrimaryColumn('uuid')
     id?: string;

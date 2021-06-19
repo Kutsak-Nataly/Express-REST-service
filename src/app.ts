@@ -10,6 +10,7 @@ import {router as userRouter} from './resources/users/user.router';
 import {router as boardRouter} from './resources/board/board.router';
 import {router as taskRouter} from './resources/task/task.router';
 
+
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 

@@ -266,3 +266,4 @@
 1623946027030	DELETE 	 body: {}	/boards/11dedf4b-f369-43e1-b59c-2398148b5158/tasks/19cd220c-8af7-4480-8751-b5f0f05fbb2c	 query: {} 	200 	[0ms]
 1623946027033	GET 	 body: {}	/boards/11dedf4b-f369-43e1-b59c-2398148b5158/tasks/19cd220c-8af7-4480-8751-b5f0f05fbb2c	 query: {} 	404 	[0ms]
 1623946027035	DELETE 	 body: {}	/boards/11dedf4b-f369-43e1-b59c-2398148b5158	 query: {} 	200 	[1ms]
+1624107346855	GET 	 body: {}	/users	 query: {} 	200 	[8ms]
