@@ -1,3 +1,0 @@
-1624217712823 	Type: other 	GET 	500 	/boards/string/tasks/90c07529-e49e-4f8f-b6d4-e669296a14e3 	Internal Server Error
-1624217712895 	Type: error 	DELETE 	400 	/boards/377a35b2-3372-4948-a98e-334feb2355a0 	Board don't delete
-1624217713126 	Type: error 	DELETE 	400 	/users/4550dc7e-8ba8-4ac9-a2e6-9a25fe593568 	User don't delete
