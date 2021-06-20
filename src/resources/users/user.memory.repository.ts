@@ -1,21 +1,29 @@
-import {DB} from '../../database/db';
+import {getRepository} from 'typeorm';
 import {User} from './user.model';
 
-const {users} = DB;
-const getAll = async (): Promise<User[]> => users;
-const getById = async (id: string): Promise<User | undefined> => users.find(user => user.id === id);
-const postUser = async (user: User): Promise<number> => users.push(user);
-const putUser = async (user: User): Promise<void> => {
-    const userIndex = users.findIndex(el => el.id === user.id);
-    if (userIndex !== -1) {
-        users.splice(userIndex, 1, user);
-    }
+const getAll = async (): Promise<User[]> => {
+    const userRepository = getRepository(User);
+    const users = await userRepository.find({});
+    return users;
+};
+const getById = async (id: string): Promise<User | undefined> => {
+    const userRepository = getRepository(User);
+    const user = await userRepository.findOne(id);
+    return user;
+};
+const postUser = async (user: User): Promise<User> => {
+    const userRepository = getRepository(User);
+    const userNew = await userRepository.save(user);
+    return userNew;
+};
+const putUser = async (user: User): Promise<User> => {
+    const userRepository = getRepository(User);
+    return userRepository.save(user);
 };
 const deleteById = async (id: string): Promise<void> => {
-    const userIndex = users.findIndex(user => user.id === id);
-    if (userIndex !== -1) {
-        users.splice(userIndex, 1);
-    }
+    const userRepository = getRepository(User);
+    const removeResult = await userRepository.delete(id);
+    if (!removeResult.affected) throw new Error('Error delete By Id User');
 };
 const usersRepo = {getAll, getById, postUser, putUser, deleteById};
 

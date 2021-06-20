@@ -1,33 +1,25 @@
-import {createConnection, getConnection} from 'typeorm';
+import {createConnection} from 'typeorm';
 import {config} from './ormconfig';
 
-async function connectToDb() {
+const connectToDB = async () => {
     let connection;
-    try {
-        connection = getConnection();
-    } catch (err) {
-        console.log(`Error Get Connection ORM\n${err}`);
-    }
 
     try {
-        if (connection) {
-            if (!connection.isConnected) await connection.connect;
-        } else {
-            await createConnection(config);
+        connection = await createConnection(config);
+        if (!connection.isConnected) {
+            await connection.connect();
         }
-        console.log('Successfully Connection');
+        console.log('Connected To PostgreSQL!');
     } catch (err) {
-        console.log(`Error Connection ORM\n${err}`);
+        console.log('Err', err);
     }
 };
 
-const tryDbConnect = async (cb: () => void) => {
+export const TryDBConnect = async (cb: () => void): Promise<void> => {
     try {
-        await connectToDb();
+        await connectToDB();
         cb();
     } catch (err) {
-        console.log(`Error Connection ORM\n${err}`);
+        console.log('DB connection err', err);
     }
 };
-
-export {tryDbConnect};

@@ -1,5 +1,5 @@
 import {v4 as uuid} from 'uuid';
-import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from 'typeorm';
+import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {Board} from '../board/board.model';
 import {User} from '../users/user.model';
 import {ColumnBoard} from '../columns/column.model';
@@ -12,16 +12,16 @@ class Task {
     order: number;
     @Column()
     description: string;
-    @OneToOne(() => User, user => user.id)
-    @JoinColumn()
+    @ManyToOne(() => User, user => user.id)
+    @JoinColumn({name: 'userId'})
     userId: string | null;
-    @OneToOne(() => Board, board => board.id)
-    @JoinColumn()
+    @ManyToOne(() => Board, board => board.id)
+    @JoinColumn({name: 'boardId'})
     boardId: string;
-    @OneToOne(() => ColumnBoard, column => column.id)
-    @JoinColumn()
+    @ManyToOne(() => ColumnBoard, column => column.id)
+    @JoinColumn({name: 'columnId'})
     columnId: string | null;
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     id?: string;
 
     constructor(title: string = 'string', order: number = 0, description: string = 'string', userId: string | null  = null, boardId: string = 'string', columnId: string | null = null, id: string = uuid()) {

@@ -1,31 +1,46 @@
-import {DB} from '../../database/db';
+import {getRepository} from 'typeorm';
 import {Task} from "./task.model";
 
-const {tasks} = DB;
-const getAll = async (boardId: string): Promise<Task[]> => tasks.filter(task => task.boardId === boardId);
-const getById = async (boardId: string, id: string): Promise<Task | undefined> => tasks.find(task => (task.id === id && task.boardId === boardId));
-const postTask = async (task: Task): Promise<number> => tasks.push(task);
-const putTask = async (task: Task): Promise<void> => {
-    const taskIndex = tasks.findIndex(el => (el.id === task.id && el.boardId === task.boardId));
-    tasks.splice(taskIndex, 1, task);
+const getAll = async (boardId: string): Promise<Task[]> => {
+    const tasks = await getRepository(Task)
+        .createQueryBuilder('task')
+        .where('task.boardId = :boardId', {boardId})
+        .getMany();
+    return tasks;
+};
+const getById = async (boardId: string, id: string): Promise<Task | undefined> => {
+    const task = await getRepository(Task)
+        .createQueryBuilder('task')
+        .where('task.boardId = :boardId AND task.id = :id', {boardId, id})
+        .getOne();
+    return task;
+};
+const postTask = async (task: Task): Promise<Task> => {
+    const taskNew = await getRepository(Task).save(task);
+    return taskNew;
+};
+const putTask = async (task: Task): Promise<Task> => {
+    const taskApd = await getRepository(Task).save(task);
+    return taskApd;
 };
 const deleteById = async (boardId: string, id: string): Promise<void> => {
-    const userIndex = tasks.findIndex(task => (task.boardId === boardId && task.id === id));
-    tasks.splice(userIndex, 1);
+    await getRepository(Task)
+        .createQueryBuilder('task')
+        .delete()
+        .where('task.boardId = :boardId AND task.id = :id', {boardId, id});
 };
 const removeByBoard = (boardId: string): void => {
-    const tasksDel: Task[] = tasks.filter(task => (task.boardId === boardId));
-    tasksDel.forEach(taskDel => {
-        tasks.splice(tasks.indexOf(taskDel), 1);
-    });
+    getRepository(Task)
+        .createQueryBuilder('task')
+        .delete()
+        .where('task.boardId = :boardId', {boardId});
 };
 const updateTasksByUser = (userId: string): void => {
-    tasks.forEach(task => {
-        const currentTask = task;
-        if (currentTask.userId === userId) {
-            currentTask.userId = null;
-        }
-    })
+    getRepository(Task)
+        .createQueryBuilder('task')
+        .update()
+        .set({userId: null})
+        .where('task.userId = :userId', {userId});
 };
 
 const taskRepo = {getAll, getById, postTask, putTask, deleteById, removeByBoard, updateTasksByUser};

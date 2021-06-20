@@ -1,5 +1,5 @@
 import {v4 as uuid} from 'uuid';
-import {Column, Entity, PrimaryColumn} from 'typeorm';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 type UserPublic = Omit<User, 'password'>;
 
@@ -11,7 +11,7 @@ class User {
   login: string;
   @Column()
   password: string;
-  @PrimaryColumn('uuid')
+  @PrimaryGeneratedColumn('uuid')
   id?: string;
 
   constructor(name: string = 'USER', login: string = 'user', password: string = 'P@55w0rd', id: string = uuid()) {

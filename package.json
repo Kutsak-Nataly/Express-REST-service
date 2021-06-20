@@ -16,7 +16,9 @@
     "doc": "node_modules/.bin/jsdoc src -c conf.json",
     "tsc:w": "tsc -w",
     "tsc": "tsc",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config=src/ormconfig.ts",
+    "db:create": "yarn typeorm migration:generate -- -n"
   },
   "keywords": [
     "rs",

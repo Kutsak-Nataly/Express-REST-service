@@ -7,14 +7,17 @@ const router = express.Router({mergeParams: true});
 
 router.route('/').get(async (req: Request, res: Response, next: NextFunction) => {
   if (req.params['boardId']) {
-    const tasks = await taskService.getAll(req.params['boardId']);
-    if (tasks) {
-      res.status(200).json(tasks);
-    } else {
-      const err = new MyError('Tasks Not found', 'error', 404);
+    try {
+      const tasks = await taskService.getAll(req.params['boardId']);
+      if (!tasks) {
+        throw new MyError('Tasks Not found', 'error', 404);
+      } else {
+        res.status(200).json(tasks);
+        return;
+      }
+    } catch (err) {
       next(err);
     }
-
   } else {
     const err = new MyError('Bad Request for get all tasks by board id', 'validation', 400);
     next(err);
@@ -23,11 +26,15 @@ router.route('/').get(async (req: Request, res: Response, next: NextFunction) =>
 
 router.route('/:id').get(async (req: Request, res: Response, next: NextFunction) => {
   if (req.params['boardId'] && req.params['id']) {
-    const task = await taskService.getById(req.params['boardId'], req.params['id']);
-    if (task) {
-      res.status(200).json(task);
-    } else {
-      const err = new MyError('Task Not found', 'error', 404);
+    try {
+      const task = await taskService.getById(req.params['boardId'], req.params['id']);
+      if (!task) {
+        throw new MyError('Task Not found', 'error', 404);
+      } else {
+        res.status(200).json(task);
+        return;
+      }
+    } catch (err) {
       next(err);
     }
   } else {

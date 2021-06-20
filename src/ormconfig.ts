@@ -1,6 +1,5 @@
 import {ConnectionOptions} from 'typeorm';
 import {
-    TYPEORM_CONNECTION,
     TYPEORM_DATABASE,
     TYPEORM_HOST,
     TYPEORM_MAX_QUERY_EXECUTION_TIME,
@@ -16,7 +15,6 @@ import {Board} from './resources/board/board.model';
 
 const config = {
     type: 'postgres',
-    name: TYPEORM_CONNECTION,
     host: TYPEORM_HOST,
     port: TYPEORM_PORT,
     username: TYPEORM_USERNAME,
