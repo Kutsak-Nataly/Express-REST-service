@@ -2,7 +2,7 @@
 ***
 ## Used
 * Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
-* Select branch Docker
+* Select branch Task7
 ### Configuration connection to database
 src/ormconfig.ts
 ### Start App
