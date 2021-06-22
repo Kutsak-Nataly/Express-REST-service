@@ -1,5 +1,6 @@
 import {getRepository} from 'typeorm';
 import {Board} from './board.model';
+import {MyError} from '../../error_handler/myError';
 
 const getAll = async (): Promise<Board[]> => {
     const boardRepository = getRepository(Board);
@@ -10,17 +11,16 @@ const getById = async (id: string): Promise<Board | undefined> => {
     return boardRepository.findOne(id);
 };
 const postBoard = async (board: Board): Promise<Board> => {
-    const boardRepository = getRepository(Board);
-    return boardRepository.save(board);
+    const boardNew = getRepository(Board).save(board);
+    return boardNew;
 };
 const putBoard = async (board: Board): Promise<Board> => {
-    const boardRepository = getRepository(Board);
-    return boardRepository.save(board);
+    const boardApd = getRepository(Board).save(board);
+    return boardApd;
 };
 const deleteById = async (id: string): Promise<void> => {
-    const boardRepository = getRepository(Board);
-    const removeResult = await boardRepository.delete(id);
-    if (!removeResult.affected) throw new Error('Error delete By Id Board');
+    const removeResult = await getRepository(Board).delete(id);
+    if (removeResult.affected === 0) throw new MyError(`Error delete By Id = ${id} Board`, 'error', 400);
 };
 const boardRepo = {getAll, getById, postBoard, putBoard, deleteById};
 

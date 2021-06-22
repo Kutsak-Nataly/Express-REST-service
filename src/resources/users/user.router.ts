@@ -36,7 +36,7 @@ router.route('/:id').get(async (req: Request, res: Response, next: NextFunction)
 
 router.route('/').post(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-        const user = new User(req.body.name, req.body.login, req.body.password);
+        const user = req.body;
         await usersService.postUser(user);
         res.status(201).json(User.toResponse(user));
     } catch {
@@ -46,20 +46,14 @@ router.route('/').post(async (req: Request, res: Response, next: NextFunction): 
 });
 
 router.route('/:id').put(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const user = new User(
-        req.body.name,
-        req.body.login,
-        req.body.password,
-        req.params['id']
-    );
-    if (user) {
+    if (req.params['id']) {
         try {
-            if (user) {
-                await usersService.putUser(user);
-                res.status(200).json(user);
-            }
+            const user = req.body;
+            user.id = req.params['id'];
+            await usersService.putUser(user);
+            res.status(200).json(user);
         } catch {
-            const err = new MyError('User don\'t update', 'error', 400);
+            const err = new MyError('User not update', 'error', 400);
             next(err);
         }
     } else {
@@ -73,8 +67,7 @@ router.route('/:id').delete(async (req: Request, res: Response, next: NextFuncti
         try {
             await usersService.deleteById(req.params['id']);
             res.status(200).send('delete user by ID successfully completed');
-        } catch {
-            const err = new MyError('User don\'t delete', 'error', 400);
+        } catch (err) {
             next(err);
         }
     } else {
