@@ -32,20 +32,19 @@ router.route('/:boardId').get(async (req: Request, res: Response, next: NextFunc
 
 router.route('/').post(async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const board = new Board(req.body.title);
-    await boardService.postBoard(board);
-    res.status(201).json(board);
+    const newBoard = await boardService.postBoard(req.body);
+    res.status(201).json(newBoard);
   } catch {
     const err = new MyError('Board don\'t create', 'error', 400);
     next(err);
   }
-
 });
 
 router.route('/:id').put(async (req: Request, res: Response, next: NextFunction) => {
   try {
     const board = new Board(
         req.body.title,
+        req.body.columns,
         req.params['id']
     );
     await boardService.putBoard(board);

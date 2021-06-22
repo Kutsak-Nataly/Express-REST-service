@@ -3,13 +3,13 @@ import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 type UserPublic = Omit<User, 'password'>;
 
-@Entity()
+@Entity({ name: 'users' })
 class User {
-  @Column()
+  @Column({default: 'USER'})
   name: string;
-  @Column()
+  @Column({default: 'user'})
   login: string;
-  @Column()
+  @Column({default: 'P@55w0rd'})
   password: string;
   @PrimaryGeneratedColumn('uuid')
   id?: string;

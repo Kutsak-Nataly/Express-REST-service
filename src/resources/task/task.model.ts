@@ -1,30 +1,24 @@
 import {v4 as uuid} from 'uuid';
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
-import {Board} from '../board/board.model';
-import {User} from '../users/user.model';
-import {ColumnBoard} from '../columns/column.model';
+import {Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
-@Entity()
+@Entity({ name: 'tasks' })
 class Task {
-    @Column()
+    @Column({default: ''})
     title: string;
-    @Column()
+    @Column({default: 0})
     order: number;
-    @Column()
+    @Column({default: ''})
     description: string;
-    @ManyToOne(() => User, user => user.id)
-    @JoinColumn({name: 'userId'})
+    @Column('varchar', { length: 255, default: null, nullable: true })
     userId: string | null;
-    @ManyToOne(() => Board, board => board.id)
-    @JoinColumn({name: 'boardId'})
+    @Column('varchar', { length: 255, default: null, nullable: true })
     boardId: string;
-    @ManyToOne(() => ColumnBoard, column => column.id)
-    @JoinColumn({name: 'columnId'})
+    @Column('varchar', { length: 255, default: null, nullable: true })
     columnId: string | null;
     @PrimaryGeneratedColumn('uuid')
     id?: string;
 
-    constructor(title: string = 'string', order: number = 0, description: string = 'string', userId: string | null  = null, boardId: string = 'string', columnId: string | null = null, id: string = uuid()) {
+    constructor(title: string = 'string', order: number = 0, description: string = 'string', userId: string | null = null, boardId: string = 'string', columnId: string | null = null, id: string = uuid()) {
         this.title = title;
         this.order = order;
         this.description = description;

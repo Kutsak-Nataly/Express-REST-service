@@ -1,0 +1,49 @@
+Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)Caught exception: listen EADDRINUSE: address already in use :::4000
+ Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1318:16)
+    at listenInCluster (net.js:1366:12)
+    at Server.listen (net.js:1452:7)
+    at Function.listen (D:\work\node\Express-REST-service\node_modules\express\lib\application.js:618:24)
+    at D:\work\node\Express-REST-service\src\server.ts:6:9
+    at Object.TryDBConnect (D:\work\node\Express-REST-service\src\db.ts:21:9)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
