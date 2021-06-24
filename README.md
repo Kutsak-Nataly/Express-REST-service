@@ -3,10 +3,19 @@
 ## Used
 * Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
 * Select branch Task7
-### Configuration connection to database
-src/ormconfig.ts
-### Start App
+### Configuration connection to your local database
+.env file
+TYPEORM_SYNCHRONIZE=<del>false</del>true
+### Start App with synchronize database
 npm start
+### Run test
+npm run test
+### Check migration
+fix .env file
+TYPEORM_SYNCHRONIZE=<del>true</del>false
+```$xslt
+npm run db:generate
+```
 
 * Run command from the root disk of the project
 ```$xslt
