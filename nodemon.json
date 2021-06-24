@@ -1,0 +1,17 @@
+{
+  "ignore": [
+    "node_modules",
+    "doc",
+    "log",
+    "build",
+    "test"
+  ],
+  "watch": [
+    "./src"
+  ],
+  "exec": "ts-node src/server.ts",
+  "ext": "ts",
+  "execMap": {
+    "ts": "ts-node"
+  }
+}

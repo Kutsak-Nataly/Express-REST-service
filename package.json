@@ -5,14 +5,22 @@
     "type": "git",
     "url": ""
   },
-  "type": "commonjs",
   "description": "REST service starter for RS School",
-  "main": "src/server.js",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "nodemon src/server.js",
-    "lint": "eslint --ext .js,.ts --fix src/",
+    "start": "tsc && nodemon --trace-warnings build/server.js",
+    "start-nodemon": "nodemon -L --watch src --exec npm start --ext ts --exitcrash",
+    "lint": "eslint --ext .js,.ts src/",
     "test": "cross-env DEBUG=rs:* jest --testMatch \"<rootDir>/test/e2e/test/*.test.js\" --noStackTrace --runInBand",
-    "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace"
+    "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
+    "doc": "node_modules/.bin/jsdoc src -c conf.json",
+    "tsc:w": "tsc -w",
+    "tsc": "tsc",
+    "dev": "nodemon",
+    "db:create": "typeorm migration:create -n cdb1",
+    "db:generate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:generate -n gdb1",
+    "db:run": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run",
+    "db:revert": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:revert"
   },
   "keywords": [
     "rs",
@@ -44,30 +52,49 @@
     ]
   },
   "dependencies": {
-    "@types/express": "^4.17.11",
-    "@types/node": "^15.0.3",
+    "@types/express": "^4.17.12",
+    "@types/sequelize": "^4.28.9",
+    "@types/swagger-ui-express": "^4.1.2",
+    "@types/uuid": "^8.3.0",
+    "@types/yamljs": "^0.2.31",
     "cross-env": "7.0.3",
+    "docdash": "^1.2.0",
     "dotenv": "9.0.0",
     "express": "4.17.1",
+    "ink-docstrap": "^1.3.2",
+    "pg": "^8.6.0",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.6.2",
     "swagger-ui-express": "4.1.6",
+    "typeorm": "^0.2.34",
     "uuid": "8.3.2",
     "yamljs": "0.3.0"
   },
   "devDependencies": {
+    "@types/node": "^15.12.3",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
     "chai": "4.3.4",
     "debug": "4.3.1",
     "dirty-chai": "2.0.1",
     "eslint": "7.2.0",
     "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-airbnb-typescript": "^12.3.1",
     "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-import": "2.22.0",
     "eslint-plugin-node": "11.1.0",
     "eslint-plugin-prettier": "3.4.0",
     "husky": "4.3.8",
     "jest": "26.6.3",
     "lint-staged": "10.5.4",
-    "nodemon": "2.0.7",
+    "nodemon": "^2.0.7",
     "prettier": "2.2.1",
-    "supertest": "6.1.3"
+    "supertest": "6.1.3",
+    "ts-node": "^10.0.0",
+    "tslib": "^2.2.0",
+    "typescript": "^4.3.2"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }

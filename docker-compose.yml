@@ -1,0 +1,44 @@
+version: "3"
+services:
+  db:
+    container_name: task6_bd
+    image: db:tag
+    build:
+      context: .
+      dockerfile: Dockerfile-db
+    networks:
+      - my-net
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: ${TYPEORM_PASSWORD}
+      POSTGRES_USER: ${TYPEORM_USERNAME}
+      POSTGRES_DB: ${TYPEORM_DATABASE}
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    ports:
+      - ${TYPEORM_PORT}:${TYPEORM_PORT}
+  app:
+    container_name: task6
+    image: app:tag
+    build:
+      context: .
+      dockerfile: Dockerfile-app
+    networks:
+      - my-net
+    volumes:
+      - ./log:/app/log
+      - ./src:/app/src
+    restart: always
+    environment:
+      - PORT=${PORT}
+    expose:
+      - ${PORT}
+    ports:
+      - ${PORT}:${PORT}
+    depends_on:
+      - db
+networks:
+  my-net:
+    driver: bridge
+volumes:
+  database:
