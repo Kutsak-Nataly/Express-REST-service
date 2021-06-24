@@ -17,11 +17,10 @@
     "tsc:w": "tsc -w",
     "tsc": "tsc",
     "dev": "nodemon",
-    "typeorm": "ts-node --transpile-only ./node_modules/typeorm/cli.js",
     "db:create": "typeorm migration:create -n cdb1",
-    "db:generate": "typeorm migration:generate -n migr1",
-    "db:run": "typeorm migration:run",
-    "db:revert": "typeorm migration:revert"
+    "db:generate": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:generate -n gdb1",
+    "db:run": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run",
+    "db:revert": "ts-node --transpile-only ./node_modules/typeorm/cli.js migration:revert"
   },
   "keywords": [
     "rs",

@@ -66,3 +66,10 @@
 1624537672260 	Type: other 	GET 	500 	/boards/undefined/tasks/undefined 	Internal Server Error
 1624537672262 	Type: other 	DELETE 	500 	/boards/undefined 	Internal Server Error
 1624538017028 	Type: error 	GET 	404 	/users 	Users Not found
+1624538584398 	Type: error 	GET 	404 	/boards/602f5a57-60bd-4514-9cfd-ef6e122fc742 	Board Not found
+1624538584574 	Type: error 	GET 	404 	/boards/189bed0d-3f2a-4d03-8ee6-8b130bfcaaf9/tasks/5e56ea5b-0bb2-485d-a4b6-c0dc2a958839 	Task Not found
+1624538584575 	Type: error 	GET 	404 	/boards/189bed0d-3f2a-4d03-8ee6-8b130bfcaaf9/tasks/e3b9a74f-cb41-4429-87c0-c7cbf4bc7e74 	Task Not found
+1624538584575 	Type: error 	GET 	404 	/boards/189bed0d-3f2a-4d03-8ee6-8b130bfcaaf9/tasks/5c07fa53-51d0-4780-9541-f54e4776875a 	Task Not found
+1624538584576 	Type: error 	GET 	404 	/boards/189bed0d-3f2a-4d03-8ee6-8b130bfcaaf9/tasks/785fbc57-0db4-4cd7-8a5b-9a73f9cd3004 	Task Not found
+1624538584577 	Type: error 	GET 	404 	/boards/189bed0d-3f2a-4d03-8ee6-8b130bfcaaf9/tasks/70afc5da-949a-4098-8b47-ff8788dc1bc4 	Task Not found
+1624538585038 	Type: error 	GET 	404 	/boards/27bbade6-e635-4853-9fc7-d0f936a2a777/tasks/3dcab725-c089-44cc-9486-32a9ffedbb69 	Task Not found
