@@ -1,11 +1,14 @@
-import {HOST, PORT} from './common/config';
+import {createConnection} from 'typeorm';
+import {TYPEORM_HOST, PORT} from './common/config';
 import {app} from './app';
-import {TryDBConnect} from './db';
 
-TryDBConnect(() => {
-    app.listen(PORT, () =>
-        // eslint-disable-next-line no-console
-        console.log(`App is running on http://${HOST}:${PORT}`)
-    );
-});
+createConnection()
+    .then(() => {
+        app.listen(PORT, () =>
+            process.stdout.write(`App is running on http://${TYPEORM_HOST}:${PORT}`)
+        );
+    })
+    .catch((e) => {
+        process.stderr.write('Failed to connect DB', e.message);
+    });
 

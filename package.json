@@ -17,8 +17,9 @@
     "tsc:w": "tsc -w",
     "tsc": "tsc",
     "dev": "nodemon",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config=src/ormconfig.ts",
-    "db:create": "yarn typeorm migration:generate -- -n"
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "db:create": "typeorm migration:create -n cdb1",
+    "db:generate": "typeorm migration:generate -n gdb1"
   },
   "keywords": [
     "rs",
