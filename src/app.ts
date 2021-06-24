@@ -13,12 +13,11 @@ import {router as taskRouter} from './resources/task/task.router';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
-
 app.use(express.json());
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
     if (req.originalUrl === '/') {
-        res.send('Service is running!');
+        res.send('Service is running!!!!!');
         return;
     }
     next();
