@@ -5,6 +5,8 @@ declare const process: {
   env: {
     PORT: number,
     TYPEORM_HOST: string,
+    JWT_SECRET_KEY: string,
+    CRYPT_SALT: number
   };
 };
 
@@ -14,5 +16,7 @@ dotEnv.config({
 
 export const {
   PORT,
-  TYPEORM_HOST
+  TYPEORM_HOST,
+  JWT_SECRET_KEY,
+  CRYPT_SALT
 } = process.env;

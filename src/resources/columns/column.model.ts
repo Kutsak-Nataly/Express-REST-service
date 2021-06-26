@@ -28,5 +28,4 @@ class ColumnBoard {
     this.id = id;
   }
 }
-
 export {ColumnBoard};

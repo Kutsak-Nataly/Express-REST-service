@@ -1,7 +1,9 @@
 import express, {NextFunction, Request, Response} from 'express';
+import bcrypt from 'bcrypt';
 import {User} from './user.model';
 import {usersService} from './user.service';
 import {MyError} from '../../error_handler/myError';
+import {CRYPT_SALT} from '../../common/config';
 
 const router = express.Router();
 
@@ -37,6 +39,10 @@ router.route('/:id').get(async (req: Request, res: Response, next: NextFunction)
 router.route('/').post(async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
         const user = req.body;
+        bcrypt.hash(user.password, CRYPT_SALT, (err, hash) => {
+            next(err);
+            user.password = hash;
+        });
         await usersService.postUser(user);
         res.status(201).json(User.toResponse(user));
     } catch {
@@ -50,6 +56,10 @@ router.route('/:id').put(async (req: Request, res: Response, next: NextFunction)
         try {
             const user = req.body;
             user.id = req.params['id'];
+            bcrypt.hash(user.password, CRYPT_SALT, (err, hash) => {
+                next(err);
+                user.password = hash;
+            });
             await usersService.putUser(user);
             res.status(200).json(user);
         } catch {
@@ -66,7 +76,7 @@ router.route('/:id').delete(async (req: Request, res: Response, next: NextFuncti
     if (req.params['id']) {
         try {
             await usersService.deleteById(req.params['id']);
-            res.status(200).send('delete user by ID successfully completed');
+            res.status(200).json('delete user by ID successfully completed');
         } catch (err) {
             next(err);
         }

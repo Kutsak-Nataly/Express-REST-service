@@ -9,12 +9,16 @@ import {clientErrorHandler} from './error_handler/client-error-handler';
 import {router as userRouter} from './resources/users/user.router';
 import {router as boardRouter} from './resources/board/board.router';
 import {router as taskRouter} from './resources/task/task.router';
+import {router as loginRouter} from './resources/users/login.router';
+import {validation} from './authentication/validate-session';
 
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 app.use(express.json());
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
+app.use(infoLog);
+app.use('/login', loginRouter);
 app.use('/', (req: Request, res: Response, next: NextFunction) => {
     if (req.originalUrl === '/') {
         res.send('Service is running!!!!!');
@@ -22,8 +26,7 @@ app.use('/', (req: Request, res: Response, next: NextFunction) => {
     }
     next();
 });
-app.use(infoLog);
-
+app.use(validation);
 app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 app.use('/boards/:boardId/tasks', taskRouter);

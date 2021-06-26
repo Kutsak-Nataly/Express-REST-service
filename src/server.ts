@@ -5,10 +5,10 @@ import {app} from './app';
 createConnection()
     .then(() => {
         app.listen(PORT, () =>
-            process.stdout.write(`App is running on http://${TYPEORM_HOST}:${PORT}`)
+            console.log(`App is running on http://${TYPEORM_HOST}:${PORT}`)
         );
     })
     .catch((e) => {
-        process.stderr.write('Failed to connect DB', e.message);
+        console.log('Failed to connect DB', e.message);
     });
 
