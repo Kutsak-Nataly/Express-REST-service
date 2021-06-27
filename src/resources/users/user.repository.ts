@@ -14,7 +14,7 @@ const getById = async (id: string): Promise<User | undefined> => {
 };
 const getByLogin = async (login: string): Promise<User | undefined> => {
     const userRepository = getRepository(User);
-    const user = await userRepository.findOne(login);
+    const user = await userRepository.findOne({login});
     return user;
 };
 const postUser = async (user: User): Promise<User> => {
