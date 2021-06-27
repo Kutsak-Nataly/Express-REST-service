@@ -1,6 +1,8 @@
 import {getRepository} from 'typeorm';
+import bcrypt from 'bcrypt';
 import {User} from './user.model';
 import {MyError} from '../../error_handler/myError';
+import {CRYPT_SALT} from '../../common/config';
 
 const getAll = async (): Promise<User[]> => {
     const userRepository = getRepository(User);
@@ -18,11 +20,15 @@ const getByLogin = async (login: string): Promise<User | undefined> => {
     return user;
 };
 const postUser = async (user: User): Promise<User> => {
-    const userNew = await getRepository(User).save(user);
+    const userHash = user;
+    userHash.password = bcrypt.hashSync(userHash.password, +CRYPT_SALT);
+    const userNew = await getRepository(User).save(userHash);
     return userNew;
 };
 const putUser = async (user: User): Promise<User> => {
-    const userApd = await getRepository(User).save(user);
+    const userHash = user;
+    userHash.password = bcrypt.hashSync(userHash.password, +CRYPT_SALT);
+    const userApd = await getRepository(User).save(userHash);
     return userApd;
 };
 const deleteById = async (id: string): Promise<void> => {

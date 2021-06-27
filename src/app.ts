@@ -11,10 +11,12 @@ import {router as boardRouter} from './resources/board/board.router';
 import {router as taskRouter} from './resources/task/task.router';
 import {router as loginRouter} from './resources/users/login.router';
 import {validation} from './authentication/validate-session';
-
+// import {usersService} from './resources/users/user.service';
 
 const app = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
+
+// usersService.putUser({login: 'admin', password: 'admin', name: '123'}).then().catch(err => console.log(err));
 app.use(express.json());
 app.use('/doc', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 app.use(infoLog);
