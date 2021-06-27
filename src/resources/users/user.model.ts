@@ -5,15 +5,15 @@ import {Task} from '../task/task.model';
 
 type UserPublic = Omit<User, 'password'>;
 
-@Entity({name: 'user'})
+@Entity({ name: 'user' })
 class User {
     @Column({default: 'USER'})
     name: string;
-    @Column({default: 'user', unique: true})
+    @Column({default: 'user'})
     login: string;
     @Column({default: 'P@55w0rd'})
     password: string;
-    @OneToMany(() => Task, task => task.user, {cascade: ['remove']})
+    @OneToMany(() => Task, task => task.user, {cascade: ['remove'] })
     tasks?: Task[];
     @PrimaryGeneratedColumn('uuid')
     id?: string;
