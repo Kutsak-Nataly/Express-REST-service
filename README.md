@@ -1,33 +1,23 @@
-# PostgreSQL & Typeorm
+# Authentication and JWT
 ***
 ## Used
 * Clone repository from GitHub to your computer. Install the dependencies specified in the file package.json.
-* Select branch Task7
+* Select branch Task8
 ### Configuration connection to your local database
 .env file
-TYPEORM_SYNCHRONIZE=<del>false</del>true
+TYPEORM_USERNAME=
+TYPEORM_PASSWORD=
+TYPEORM_DATABASE=
 ### Start App with synchronize database
 npm start
+### Add user "admin"
+POST:http://localhost:4000/login/add-user
+{
+"name": "123",
+"login": "admin6756",
+"password":"admin"
+}
 ### Run test
-npm run test
-### Check migration
-fix .env file
-TYPEORM_SYNCHRONIZE=<del>true</del>false
-```$xslt
-npm run db:generate
-```
+npm run test:auth
 
-* Run command from the root disk of the project
-```$xslt
-docker-compose up
-```
-* Run command to build container from image app
-```$xslt
-docker run –d --rm –p 4000:4000 <id-app>
-```
-### Files
-Dockerfile for PostgreSQ -> ./Dockerfile-db
-Dockerfile for nodejs app -> ./Dockerfile-app
-
-### Docker Hub
 

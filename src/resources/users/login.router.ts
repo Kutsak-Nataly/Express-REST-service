@@ -21,7 +21,7 @@ router.route('/').post(async (req: Request, res: Response, next: NextFunction): 
                             } else {
                                 const token = jwt.sign({
                                     login: user.login,
-                                    userId : user.id
+                                    id : user.id
                                 }, JWT_SECRET_KEY, {expiresIn: 60 * 60 * 24});
                                 res.status(201).json({token, user: User.toResponse(user)});
                             }
