@@ -306,3 +306,10 @@
 1624822232370 	Type: error 	POST 	403 	/login 	User not found
 1624822233039 	Type: error 	POST 	403 	/login 	User not found
 1624822468141 	Type: error 	POST 	403 	/login 	User not found
+1624859718515 	Type: error 	GET 	404 	/boards/96edcc07-9350-40b9-972f-5ebb1e63748c/tasks/11370f3b-fe68-4870-bbef-ba841fcd8a75 	Task Not found
+1624859718528 	Type: error 	GET 	404 	/boards/9fccce6c-4ebf-4b72-8521-533f8a1b18bc 	Board Not found
+1624859718722 	Type: error 	GET 	404 	/boards/59fa0e66-5edf-4387-be26-dd5761c4bb9d/tasks/7d51c84c-de05-4524-bb28-23580e9241bb 	Task Not found
+1624859718723 	Type: error 	GET 	404 	/boards/59fa0e66-5edf-4387-be26-dd5761c4bb9d/tasks/0c0f61ad-c66f-41e4-92dc-f3a454dcce69 	Task Not found
+1624859718725 	Type: error 	GET 	404 	/boards/59fa0e66-5edf-4387-be26-dd5761c4bb9d/tasks/2b8d8130-3d22-4aad-9961-7fca878c745a 	Task Not found
+1624859718726 	Type: error 	GET 	404 	/boards/59fa0e66-5edf-4387-be26-dd5761c4bb9d/tasks/bd82874f-41c7-4c1a-b086-3d2ad30460cd 	Task Not found
+1624859718726 	Type: error 	GET 	404 	/boards/59fa0e66-5edf-4387-be26-dd5761c4bb9d/tasks/25ed3efd-0aa2-4622-9424-26ce04ef1816 	Task Not found
