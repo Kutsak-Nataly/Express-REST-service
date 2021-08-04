@@ -9,8 +9,10 @@
 TYPEORM_USERNAME=<br>
 TYPEORM_PASSWORD=<br>
 TYPEORM_DATABASE=<br>
+
 ### Start App with synchronize database
 npm start
+
 ### Add user "admin"
 POST:http://localhost:4000/login/add-user
 {

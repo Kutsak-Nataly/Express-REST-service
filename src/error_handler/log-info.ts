@@ -12,7 +12,7 @@ const infoLog = (req: Request, res: Response, next: NextFunction): void => {
     finished(res, (): void => {
         const {statusCode} = res;
         const ms: number = Date.now() - start;
-        const data = `${start}\t${method} \t body: ${JSON.stringify(body)}\t${url}\t query: ${JSON.stringify(query)} \t${statusCode} \t[${ms}ms]\n`;
+        const data = `${start}\t${method} \t body: ${JSON.stringify(body.name)}\t${url}\t query: ${JSON.stringify(query)} \t${statusCode} \t[${ms}ms]\n`;
         writeStream.write(data);
     });
 };

@@ -1,19 +1,19 @@
 /* eslint-disable import/no-cycle */
-import {v4 as uuid} from 'uuid';
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
-import {Task} from '../task/task.model';
+import { v4 as uuid } from 'uuid';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Task } from '../task/task.model';
 
 type UserPublic = Omit<User, 'password'>;
 
 @Entity({ name: 'user' })
 class User {
-    @Column({default: 'USER'})
+    @Column({ default: 'USER' })
     name: string;
-    @Column({default: 'user'})
+    @Column({ default: 'user' })
     login: string;
-    @Column({default: 'P@55w0rd'})
+    @Column({ default: 'P@55w0rd' })
     password: string;
-    @OneToMany(() => Task, task => task.user, {cascade: ['remove'] })
+    @OneToMany(() => Task, task => task.user, { cascade: ['remove'] })
     tasks?: Task[];
     @PrimaryGeneratedColumn('uuid')
     id?: string;
@@ -27,9 +27,9 @@ class User {
     }
 
     static toResponse(user: User): UserPublic {
-        const {id, name, login} = user;
-        return {id, name, login};
+        const { id, name, login } = user;
+        return { id, name, login };
     }
 }
 
-export {User};
+export { User };
