@@ -1,5 +1,7 @@
 node_modules
 jsdoc
+database
 build
+.github
 .idea
 .vscode

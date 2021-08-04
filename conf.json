@@ -1,0 +1,73 @@
+{
+  "tags": {
+    "allowUnknownTags": true
+  },
+  "source": {
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(node_modules/|jsdoc)"
+  },
+  "cleverLinks": false,
+  "monospaceLinks": false,
+  "plugins": [],
+  "opts": {
+    "template": "node_modules/docdash",
+    "encoding": "utf8",
+    "destination": "jsdoc",
+    "recurse": true,
+    "readme": "README.md"
+  },
+  "meta": {
+    "title": "",
+    "description": "Generating auto-documenting code using JSDoc",
+    "keyword": "JSDoc auto-documenting"
+  },
+  "docdash": {
+    "static": true,
+    "sort": true,
+    "sectionOrder": [
+      "Classes",
+      "Modules",
+      "Externals",
+      "Events",
+      "Namespaces",
+      "Mixins",
+      "Tutorials",
+      "Interfaces"
+    ],
+    "openGraph": {
+      "title": "Documentation for Express REST. Task 4",
+      "type": "website",
+      "site_name": "Express REST API",
+      "url": ""
+    },
+    "meta": {
+      "title": "Documentation for Express REST. Task 4",
+      "description": "Generating auto-documenting code using JSDoc",
+      "keyword": "JSDoc auto-documenting"
+    },
+    "search": true,
+    "collapse": true,
+    "wrap": true,
+    "typedefs": true,
+    "navLevel": [
+      2
+    ],
+    "private": true,
+    "removeQuotes": true,
+    "scripts": [],
+    "menu": {
+      "DocDash": {
+        "href": "http://clenemt.github.io/docdash/index.html",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "website_link"
+      },
+      "GitHub": {
+        "href": "https://github.com/Kutsak-Nataly",
+        "target": "_blank",
+        "class": "menu-item",
+        "id": "forum_link"
+      }
+    }
+  }
+}
